@@ -17,4 +17,4 @@ SET CLASSPATH=.;jars\AdventNetSnmp.jar;jars\AdventNetAgentUtilities.jar;jars\Adv
 ECHO.
 ECHO Inicializando Agente SNMP...
 ECHO.
-java br.unisinos.gerenciaDeRedes.SnmpAgent_BrunoMateus %*
+java br.unisinos.gerenciaDeRedes.SnmpAgent_brunomateus %*

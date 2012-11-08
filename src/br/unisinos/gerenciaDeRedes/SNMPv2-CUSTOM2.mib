@@ -1,0 +1,89 @@
+
+-- File Name : SNMPv2-CUSTOM2.mib
+-- Date      : Wed Nov 07 22:36:09 EST 2012
+-- Author    : WebNMS Agent Toolkit Java Edition - MIB Editor 6
+
+
+
+SNMPv2-CUSTOM2	DEFINITIONS ::= BEGIN
+	IMPORTS
+		DisplayString
+			FROM SNMPv2-TC
+		DisplayString
+			FROM RFC1213-MIB
+		enterprises, MODULE-IDENTITY, OBJECT-TYPE, Integer32, Gauge32
+			FROM SNMPv2-SMI;
+
+	brunomateus	MODULE-IDENTITY
+		LAST-UPDATED	"201211011011Z"
+		ORGANIZATION	"br.unisinos.gerenciaDeRedes"
+		CONTACT-INFO	"BrunoSchmidtMarques-MateusRaubackAubin"
+		DESCRIPTION		"Trabalho parcial do Grau B para a disciplina Gerência de Redes da UNISINOS"
+		REVISION		"201211041328Z"
+		DESCRIPTION		""
+		::=  {  enterprises  1  }
+
+	org	OBJECT IDENTIFIER
+		::=  {  iso  3  }
+
+	dod	OBJECT IDENTIFIER
+		::=  {  org  6  }
+
+	internet	OBJECT IDENTIFIER
+		::=  {  dod  1  }
+
+	private	OBJECT IDENTIFIER
+		::=  {  internet  4  }
+
+	enterprises	OBJECT IDENTIFIER
+		::=  {  private  1  }
+
+	queryCounter	OBJECT-TYPE	
+		SYNTAX			Gauge32  ( 0 .. 4294967295  ) 
+		MAX-ACCESS		read-only
+		STATUS			current
+		DESCRIPTION		"Numero de consultas SNMP executadas"
+		DEFVAL			{ 0 }
+		::=  {  brunomateus  1  }
+
+	screenResolutionWidth	OBJECT-TYPE	
+		SYNTAX			Integer32  ( -2147483648 .. 2147483647  ) 
+		MAX-ACCESS		read-only
+		STATUS			current
+		DESCRIPTION		"Resolução da tela - largura"
+		DEFVAL			{ 0 }
+		::=  {  brunomateus  2  }
+
+	screenResolutionHeight	OBJECT-TYPE	
+		SYNTAX			Integer32  ( -2147483648 .. 2147483647  ) 
+		MAX-ACCESS		read-only
+		STATUS			current
+		DESCRIPTION		"Resolução da tela - altura"
+		DEFVAL			{ 0 }
+		::=  {  brunomateus  3  }
+
+	folderToCount	OBJECT-TYPE	
+		SYNTAX			DisplayString  ( SIZE ( 0 .. 255  ) ) 
+		MAX-ACCESS		read-write
+		STATUS			current
+		DESCRIPTION		"Pasta alvo da contagem de arquivos"
+		DEFVAL			{ "C:" }
+		::=  {  brunomateus  4  }
+
+	filesInFolder	OBJECT-TYPE	
+		SYNTAX			Integer32  ( -2147483648 .. 2147483647  ) 
+		MAX-ACCESS		read-only
+		STATUS			current
+		DESCRIPTION		"Quantidade de arquivos na pasta definida"
+		DEFVAL			{ 0 }
+		::=  {  brunomateus  5  }
+
+	filesystemCount	OBJECT-TYPE	
+		SYNTAX			Gauge32  ( 0 .. 4294967295  ) 
+		MAX-ACCESS		read-only
+		STATUS			current
+		DESCRIPTION		"Retorna a quantidade de sistemas de arquivos mapeados"
+		DEFVAL			{ 0 }
+		::=  {  brunomateus  6  }
+
+END
